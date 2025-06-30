@@ -1,0 +1,579 @@
+/* --- Variables Neumorphism --- */
+:root {
+    --bg-color: #e0e5ec;
+    --primary-color: #4e73df;
+    --shadow-light: rgba(255, 255, 255, 0.7);
+    --shadow-dark: rgba(163, 177, 198, 0.7);
+    --text-color: #2a2a2a;
+
+/* --- Variables Neumorfismo para Sidebar --- */
+    --sidebar-bg: #e0e5ec;           /* Color base */
+    --sidebar-shadow-light: rgba(255, 255, 255, 0.7);
+    --sidebar-shadow-dark: rgba(163, 177, 198, 0.7);
+    --sidebar-text: #2a2a2a;         /* Color de texto */
+    --sidebar-highlight: #4e73df;     /* Color de acento (azul original) */
+
+
+    /* --- Variables Neumorfismo para Topbar --- */
+    --topbar-bg: #e0e5ec;            /* Color base (coherente con el sidebar) */
+    --topbar-shadow-light: rgba(255, 255, 255, 0.7);
+    --topbar-shadow-dark: rgba(163, 177, 198, 0.7);
+    --topbar-text: #2a2a2a;          /* Color de texto */
+    --topbar-highlight: #4e73df;     /* Color de acento (azul del tema) */
+
+}
+
+/* --- Base --- */
+body {
+    background-color: var(--bg-color);
+    font-family: 'Nunito', sans-serif;
+    color: var(--text-color);
+}
+
+/* --- Sidebar --- */
+.sidebar {
+    background-color: var(--bg-color) !important;
+    box-shadow: 
+        8px 8px 15px var(--shadow-dark),
+        -8px -8px 15px var(--shadow-light) !important;
+    border: none !important;
+}
+
+.sidebar-brand, .nav-item {
+    background: transparent !important;
+}
+
+.nav-link {
+    color: var(--text-color) !important;
+    margin: 8px;
+    border-radius: 12px !important;
+    box-shadow: 
+        5px 5px 10px var(--shadow-dark),
+        -5px -5px 10px var(--shadow-light);
+}
+
+.nav-link:hover, .nav-link.active {
+    box-shadow: 
+        inset 3px 3px 5px var(--shadow-dark),
+        inset -3px -3px 5px var(--shadow-light);
+}
+
+/* --- Topbar --- */
+.navbar {
+    background-color: var(--bg-color) !important;
+    box-shadow: 
+        5px 5px 10px var(--shadow-dark),
+        -5px -5px 10px var(--shadow-light);
+    border: none !important;
+}
+
+/* --- Tablas --- */
+.table {
+    background-color: var(--bg-color);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 
+        8px 8px 15px var(--shadow-dark),
+        -8px -8px 15px var(--shadow-light);
+    border-collapse: separate;
+}
+
+.table thead th {
+    background-color: var(--primary-color) !important;
+    color: white;
+    border: none;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.table td, .table th {
+    border: none;
+    padding: 12px;
+}
+
+.table tbody tr {
+    transition: all 0.3s;
+}
+
+.table tbody tr:hover {
+    box-shadow: 
+        inset 2px 2px 5px var(--shadow-dark),
+        inset -2px -2px 5px var(--shadow-light);
+}
+
+/* --- Botones --- */
+.btn {
+    border: none !important;
+    border-radius: 12px !important;
+    box-shadow: 
+        5px 5px 10px var(--shadow-dark),
+        -5px -5px 10px var(--shadow-light);
+    transition: all 0.3s;
+}
+
+.btn:hover {
+    transform: translateY(2px);
+    box-shadow: 
+        3px 3px 6px var(--shadow-dark),
+        -3px -3px 6px var(--shadow-light);
+}
+
+.btn:active {
+    box-shadow: 
+        inset 2px 2px 5px var(--shadow-dark),
+        inset -2px -2px 5px var(--shadow-light);
+}
+
+.btn-primary {
+    background-color: var(--primary-color) !important;
+}
+
+/* --- Modal --- */
+.modal-content {
+    background-color: var(--bg-color) !important;
+    border: none !important;
+    border-radius: 20px !important;
+    box-shadow: 
+        15px 15px 30px var(--shadow-dark),
+        -15px -15px 30px var(--shadow-light);
+}
+
+.modal-header, .modal-footer {
+    border: none !important;
+}
+
+/* --- Formularios --- */
+.form-control, .form-select {
+    background-color: var(--bg-color) !important;
+    border: none !important;
+    border-radius: 12px !important;
+    box-shadow: 
+        inset 3px 3px 6px var(--shadow-dark),
+        inset -3px -3px 6px var(--shadow-light);
+    padding: 10px 15px;
+}
+
+.form-control:focus, .form-select:focus {
+    box-shadow: 
+        inset 1px 1px 3px var(--shadow-dark),
+        inset -1px -1px 3px var(--shadow-light);
+}
+
+/* --- Paginación --- */
+.pagination .page-item .page-link {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 12px !important;
+    box-shadow: 
+        5px 5px 10px var(--shadow-dark),
+        -5px -5px 10px var(--shadow-light);
+    margin: 0 5px;
+}
+
+.page-item.active .page-link {
+    box-shadow: 
+        inset 3px 3px 5px var(--shadow-dark),
+        inset -3px -3px 5px var(--shadow-light);
+}
+
+/* --- Alertas --- */
+.alert {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 
+        5px 5px 10px var(--shadow-dark),
+        -5px -5px 10px var(--shadow-light);
+}
+
+/* --- Efectos Especiales --- */
+.card, .container-fluid {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 20px;
+    box-shadow: 
+        10px 10px 20px var(--shadow-dark),
+        -10px -10px 20px var(--shadow-light);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+
+/* --- Reemplaza las clases existentes --- */
+#accordionSidebar {
+    background-color: var(--sidebar-bg) !important;
+    box-shadow: 
+        8px 0 15px var(--sidebar-shadow-dark),
+        -8px 0 15px var(--sidebar-shadow-light) !important;
+    border: none !important;
+}
+
+.sidebar-dark .nav-item .nav-link {
+    color: var(--sidebar-text) !important;
+    margin: 8px 15px;
+    border-radius: 12px !important;
+    background: var(--sidebar-bg);
+    box-shadow: 
+        5px 5px 10px var(--sidebar-shadow-dark),
+        -5px -5px 10px var(--sidebar-shadow-light);
+    transition: all 0.3s ease;
+}
+
+.sidebar-dark .nav-item .nav-link:hover {
+    color: var(--sidebar-highlight) !important;
+    box-shadow: 
+        inset 3px 3px 5px var(--sidebar-shadow-dark),
+        inset -3px -3px 5px var(--sidebar-shadow-light);
+}
+
+.sidebar-dark .nav-item.active .nav-link {
+    color: white !important;
+    background: var(--sidebar-highlight) !important;
+    box-shadow: 
+        inset 2px 2px 5px rgba(0, 0, 0, 0.2),
+        inset -2px -2px 5px rgba(255, 255, 255, 0.1) !important;
+}
+
+.sidebar-brand {
+    padding: 1.5rem;
+    text-align: center;
+    background: transparent !important;
+}
+
+.sidebar-brand .sidebar-brand-text {
+    color: var(--sidebar-text) !important;
+    font-weight: 700;
+    text-shadow: 
+        2px 2px 3px var(--sidebar-shadow-dark),
+        -2px -2px 3px var(--sidebar-shadow-light);
+}
+
+/* --- Iconos (si los habilitas) --- */
+.sidebar .nav-item .nav-link i {
+    margin-right: 10px;
+    color: var(--sidebar-highlight);
+}
+
+/* --- Efecto "Hundido" al hacer clic --- */
+.sidebar .nav-item .nav-link:active {
+    box-shadow: 
+        inset 5px 5px 10px var(--sidebar-shadow-dark),
+        inset -5px -5px 10px var(--sidebar-shadow-light) !important;
+}
+
+/* --- Variables Neumorfismo para Topbar --- */
+:root {
+    --topbar-bg: #e0e5ec;            /* Color base (coherente con el sidebar) */
+    --topbar-shadow-light: rgba(255, 255, 255, 0.7);
+    --topbar-shadow-dark: rgba(163, 177, 198, 0.7);
+    --topbar-text: #2a2a2a;          /* Color de texto */
+    --topbar-highlight: #4e73df;     /* Color de acento (azul del tema) */
+}
+
+/* --- Reemplaza las clases existentes --- */
+.topbar {
+    background-color: var(--topbar-bg) !important;
+    box-shadow: 
+        5px 5px 10px var(--topbar-shadow-dark),
+        -5px -5px 10px var(--topbar-shadow-light) !important;
+    border: none !important;
+    border-radius: 12px !important;
+    margin: 10px 15px !important;    /* Añade margen para destacar el efecto 3D */
+    padding: 0 15px !important;
+}
+
+/* --- Botón del menú hamburguesa (en móvil) --- */
+#sidebarToggleTop {
+    background-color: var(--topbar-bg) !important;
+    box-shadow: 
+        3px 3px 6px var(--topbar-shadow-dark),
+        -3px -3px 6px var(--topbar-shadow-light) !important;
+    border: none !important;
+    border-radius: 10px !important;
+    color: var(--topbar-text) !important;
+}
+
+#sidebarToggleTop:hover {
+    box-shadow: 
+        inset 2px 2px 4px var(--topbar-shadow-dark),
+        inset -2px -2px 4px var(--topbar-shadow-light) !important;
+}
+
+/* --- Avatar del usuario --- */
+.topbar .img-profile {
+    box-shadow: 
+        3px 3px 6px var(--topbar-shadow-dark),
+        -3px -3px 6px var(--topbar-shadow-light);
+    border: none !important;
+}
+
+/* --- Dropdown del usuario --- */
+.topbar .dropdown-menu {
+    background-color: var(--topbar-bg) !important;
+    border: none !important;
+    border-radius: 12px !important;
+    box-shadow: 
+        8px 8px 15px var(--topbar-shadow-dark),
+        -8px -8px 15px var(--topbar-shadow-light);
+}
+
+.topbar .dropdown-item {
+    color: var(--topbar-text) !important;
+    border-radius: 8px !important;
+    transition: all 0.3s;
+}
+
+.topbar .dropdown-item:hover {
+    background-color: transparent !important;
+    box-shadow: 
+        inset 2px 2px 4px var(--topbar-shadow-dark),
+        inset -2px -2px 4px var(--topbar-shadow-light);
+}
+
+/* --- Efecto al abrir el dropdown --- */
+.topbar .dropdown.show .dropdown-toggle::after {
+    transform: translateY(3px);
+}
+
+/* COLORES PARA ICONOS DEL SIDEBAR */
+#accordionSidebar .nav-link i.fa-home { /* Inicio */
+    color: #4e73df; /* Azul principal */
+}
+
+#accordionSidebar .nav-link i.fa-user-graduate { /* Alumnos */
+    color: #1cc88a; /* Verde */
+}
+
+#accordionSidebar .nav-link i.fa-book { /* Carreras */
+    color: #f6c23e; /* Amarillo */
+}
+
+#accordionSidebar .nav-link i.fa-users { /* Grupos */
+    color: #36b9cc; /* Turquesa */
+}
+
+#accordionSidebar .nav-link i.fa-chalkboard-teacher { /* Maestros */
+    color: #e74a3b; /* Rojo */
+}
+
+#accordionSidebar .nav-link i.fa-book-open { /* Materias */
+    color: #858796; /* Gris */
+}
+
+#accordionSidebar .nav-link i.fa-hands-helping { /* Tutorías */
+    color: #6f42c1; /* Morado */
+}
+
+#accordionSidebar .nav-link i.fa-layer-group { /* Materias por Grupo */
+    color: #fd7e14; /* Naranja */
+}
+
+#accordionSidebar .nav-link i.fa-project-diagram { /* Materias por Carrera */
+    color: #20c997; /* Verde agua */
+}
+
+/* Efecto hover para todos los íconos */
+#accordionSidebar .nav-link:hover i {
+    opacity: 0.8;
+    transform: scale(1.1);
+    transition: all 0.3s ease;
+}
+
+/* ===== Modo Oscuro ===== */
+.dark-mode {
+    --bg-color: #2a3042;
+    --primary-color: #6c63ff;
+    --shadow-light: rgba(0, 0, 0, 0.2);
+    --shadow-dark: rgba(0, 0, 0, 0.5);
+    --text-color: #e0e0e0;
+
+    /* Sidebar */
+    --sidebar-bg: #2a3042;
+    --sidebar-shadow-light: rgba(0, 0, 0, 0.2);
+    --sidebar-shadow-dark: rgba(0, 0, 0, 0.5);
+    --sidebar-text: #e0e0e0;
+    --sidebar-highlight: #6c63ff;
+
+    /* Topbar */
+    --topbar-bg: #2a3042;
+    --topbar-shadow-light: rgba(0, 0, 0, 0.2);
+    --topbar-shadow-dark: rgba(0, 0, 0, 0.5);
+    --topbar-text: #e0e0e0;
+    --topbar-highlight: #6c63ff;
+}
+
+/* Añadir estas reglas para las tablas en modo oscuro */
+.dark-mode .table td, 
+.dark-mode .table th {
+    border-top: 1px solid #3a3f51 !important;
+}
+
+.dark-mode .table thead th {
+    border-bottom: 2px solid #3a3f51 !important;
+}
+
+.dark-mode .table-hover tbody tr:hover {
+    background-color: #32384a;
+}
+
+.dark-mode .sidebar-brand-text,
+.dark-mode .nav-link,
+.dark-mode .dropdown-item {
+    color: var(--text-color) !important;
+}
+
+.dark-mode .table {
+    color: var(--text-color) !important;
+}
+
+.dark-mode .form-control,
+.dark-mode .form-select {
+    color: var(--text-color) !important;
+}
+
+.dark-mode .modal-content {
+    color: var(--text-color) !important;
+}
+
+/* Botón de alternar tema */
+#theme-toggle {
+    background: transparent;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: var(--text-color);
+    outline: none;
+}
+
+#theme-toggle:hover {
+    opacity: 0.8;
+}
+
+#theme-icon {
+    transition: all 0.3s ease;
+}
+
+/* Añadir esto al final del archivo */
+
+/* Fondo del wrapper principal */
+#wrapper {
+    background-color: var(--bg-color) !important;
+    min-height: 100vh;
+}
+
+/* Fondo del contenedor de contenido */
+#content-wrapper {
+    background-color: var(--bg-color) !important;
+}
+
+/* Footer */
+.sticky-footer {
+    background-color: var(--bg-color) !important;
+    box-shadow: 
+        0 -5px 10px var(--shadow-dark),
+        0 5px 10px var(--shadow-light);
+}
+
+/* Ajustes para el contenido principal */
+.container, .container-fluid {
+    background-color: transparent !important;
+    box-shadow: none !important;
+}
+
+/* Evitar transición inicial */
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Aplicar transición solo después de la carga inicial */
+body.loaded {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ===== AJUSTES PARA EL TOPBAR Y BOTÓN DE TEMA ===== */
+.topbar .navbar-nav {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.theme-toggle-container {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 10px;
+}
+
+#theme-toggle {
+    background: transparent;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: var(--text-color);
+    outline: none;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    box-shadow: 
+        3px 3px 6px var(--topbar-shadow-dark),
+        -3px -3px 6px var(--topbar-shadow-light);
+}
+
+#theme-toggle:hover {
+    box-shadow: 
+        inset 2px 2px 4px var(--topbar-shadow-dark),
+        inset -2px -2px 4px var(--topbar-shadow-light);
+}
+
+#theme-toggle:active {
+    transform: scale(0.95);
+}
+
+#theme-toggle i {
+    transition: all 0.3s ease;
+}
+
+/* Ajustar el avatar del usuario para que coincida */
+.topbar .nav-item.dropdown .nav-link {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.topbar .img-profile {
+    width: 36px;
+    height: 36px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 
+        3px 3px 6px var(--topbar-shadow-dark),
+        -3px -3px 6px var(--topbar-shadow-light);
+    transition: all 0.3s ease;
+}
+
+/* Ajustar el divisor entre elementos */
+.topbar-divider {
+    height: 2.5rem;
+    align-self: center;
+    margin: 0 10px;
+}
+
+/* Asegurar que todos los elementos del topbar tengan la misma altura */
+.topbar .nav-item {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+/* Ajustar el botón del menú hamburguesa */
+#sidebarToggleTop {
+    height: 36px;
+    width: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+}
