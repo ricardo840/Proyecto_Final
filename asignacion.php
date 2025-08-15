@@ -1,4 +1,5 @@
 <?php
+require_once "init.php"; 
 require_once "modelos/mdl_asignacion.php";
 
 $modelo = new MdlAsignacion();
@@ -318,7 +319,32 @@ require_once "vistas/parte_superior.php";
                     
                     // Actualizar contadores
                     actualizarContadores();
+
+                    // Configurar fecha mínima (hoy)
+                    const hoy = new Date();
+                    const hoyLocal = new Date(hoy.getTime() - hoy.getTimezoneOffset() * 60000);
+                    const inputFecha = document.getElementById('inputFecha');
+                    inputFecha.min = hoyLocal.toISOString().split('T')[0];
                     
+                    inputFecha.addEventListener('input', function() {
+                    const fechaSeleccionada = new Date(this.value + 'T00:00:00');
+                    const dia = fechaSeleccionada.getDay(); // 0=Dom, 1=Lun, ..., 6=Sáb
+                    
+                    if (dia === 0 || dia === 6) {
+                        alert('Solo se permiten días hábiles (Lunes a Viernes)');
+                        this.value = '';
+                    } else {
+                        const fechaSeleccionadaLocal = new Date(fechaSeleccionada.getTime() - fechaSeleccionada.getTimezoneOffset() * 60000);
+                        const hoySinHora = new Date(hoyLocal.toISOString().split('T')[0]);
+                        
+                        if (fechaSeleccionadaLocal < hoySinHora) {
+                            alert('No se pueden seleccionar fechas pasadas');
+                            this.value = '';
+                        }
+                    }
+                });
+
+
                     $('#modalAsignacion').modal('show');
                 }
             })

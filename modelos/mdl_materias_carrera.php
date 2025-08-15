@@ -77,22 +77,24 @@ class MdlMateriasCarrera {
         }
     }
 
-      public function obtenerPaginado($inicio, $limite) {
+    public function obtenerPaginado($inicio, $limite) {
         $sql = "SELECT mc.id_materia_carrera as id, 
-                             m.nombre as materia, 
-                             c.nombre as carrera
-                      FROM $this->tabla mc
-                      JOIN materias m ON mc.id_materia = m.id_materia
-                      JOIN carreras c ON mc.id_carrera = c.id_carrera
-                      where mc.activo = 0
-                      LIMIT :inicio, :limite";
+                    m.nombre as materia, 
+                    c.nombre as carrera,
+                    m.id_materia as materia_id,
+                    c.id_carrera as carrera_id
+                FROM $this->tabla mc
+                JOIN materias m ON mc.id_materia = m.id_materia AND m.activo = 0
+                JOIN carreras c ON mc.id_carrera = c.id_carrera AND c.activo = 0
+                WHERE mc.activo = 0
+                LIMIT :inicio, :limite";
 
-            $stmt = $this->conn->prepare($sql);
-            $stmt->bindParam(':inicio', $inicio, PDO::PARAM_INT);
-            $stmt->bindParam(':limite', $limite, PDO::PARAM_INT);
-            $stmt->execute();
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
-        }
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':inicio', $inicio, PDO::PARAM_INT);
+        $stmt->bindParam(':limite', $limite, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 
     public function contarMaterias_carrera() {
         $sql = "SELECT COUNT(*) AS total FROM $this->tabla WHERE activo = 0";

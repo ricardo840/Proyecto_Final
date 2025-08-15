@@ -1,4 +1,5 @@
 <?php
+require_once "init.php"; 
 require_once "modelos/mdl_maestros.php";
 
 $modelo = new MdlMaestros();
@@ -69,12 +70,13 @@ require_once "vistas/parte_superior.php";
                     <h5 class="modal-title" id="modalTitle"></h5>
                     <button type="button" class="close" onclick="cerrarModal()">&times;</button>
                 </div>
-                <form method="POST" action="Controladores/ctrl_maestros.php">
+                <form method="POST" action="Controladores/ctrl_maestros.php" onsubmit="return validarFormularioMaestro()">
                     <input type="hidden" name="id" id="Id_maestro">
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Nombre del Maestro</label>
                             <input type="text" class="form-control" name="nombre_maestro" id="nombreMaestro" required>
+                            <small id="errorNombre" class="text-danger" style="display:none;">No se permiten números</small>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -85,7 +87,6 @@ require_once "vistas/parte_superior.php";
             </div>
         </div>
     </div>
-</div>
 
 
 <nav aria-label="Paginación de maestros">
@@ -113,23 +114,27 @@ require_once "vistas/parte_superior.php";
 
 <script>
 
-    //Funcion de validacion
-    function validarFormularioCarrera() {
-        const nombre = document.getElementById('nombreCarrera').value;
+    // Función de validación
+    function validarFormularioMaestro() {
+        const nombre = document.getElementById('nombreMaestro').value;
         const errorElement = document.getElementById('errorNombre');
+        let valido = true;
         
-        //Validacion para que no contenga numeros
+        // Validación para que no contenga números
         if (/\d/.test(nombre)) {
             errorElement.style.display = 'block';
-            return false;
+            valido = false;
+        } else {
+            errorElement.style.display = 'none';
         }
         
-        errorElement.style.display = 'none';
-        return true;
+        return valido;
     }
 
-
     function abrirModal(id = '', nombre = '') {
+        // Resetear mensaje de error
+        document.getElementById('errorNombre').style.display = 'none';
+        
         document.getElementById('Id_maestro').value = id;
         document.getElementById('nombreMaestro').value = nombre;
         
@@ -145,8 +150,7 @@ require_once "vistas/parte_superior.php";
         
         $('#myModal').modal('show');
     }
-
-    function cerrarModal() {
+        function cerrarModal() {
         $('#myModal').modal('hide');
     }
 

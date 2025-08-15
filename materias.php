@@ -1,4 +1,5 @@
 <?php
+require_once "init.php"; 
 require_once "Modelos/mdl_materias.php";
 
 $modelo = new MdlMaterias();

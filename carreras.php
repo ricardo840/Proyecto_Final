@@ -1,4 +1,5 @@
 <?php
+require_once "init.php"; 
 require_once "Modelos/mdl_carreras.php";
 
 $modelo = new MdlCarrera();
@@ -69,12 +70,13 @@ require_once "vistas/parte_superior.php";
                     <h5 class="modal-title" id="modalTitle"></h5>
                     <button type="button" class="close" onclick="cerrarModal()">&times;</button>
                 </div>
-                <form method="POST" action="Controladores/ctrl_carreras.php">
-                    <input type="hidden" name="id" id="Id_carrera"> <!-- aca esta el hidden -->
+                <form method="POST" action="Controladores/ctrl_carreras.php" onsubmit="return validarFormularioCarrera()">
+                    <input type="hidden" name="id" id="Id_carrera">
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Nombre de la carrera</label>
                             <input type="text" class="form-control" name="nombre_carrera" id="nombreCarrera" required>
+                            <small id="errorNombre" class="text-danger" style="display:none;">No se permiten números</small>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -85,7 +87,6 @@ require_once "vistas/parte_superior.php";
             </div>
         </div>
     </div>
-</div>
 
 <nav aria-label="Paginación de carreras">
     <ul class="pagination justify-content-center">
@@ -111,26 +112,27 @@ require_once "vistas/parte_superior.php";
 
 
 <script>
-    //Funcion de validacion
+    // Función de validación
     function validarFormularioCarrera() {
         const nombre = document.getElementById('nombreCarrera').value;
         const errorElement = document.getElementById('errorNombre');
+        let valido = true;
         
-        //Validacion para que no contenga numeros
+        // Validación para que no contenga números
         if (/\d/.test(nombre)) {
             errorElement.style.display = 'block';
-            return false;
+            valido = false;
+        } else {
+            errorElement.style.display = 'none';
         }
         
-        errorElement.style.display = 'none';
-        return true;
+        return valido;
     }
 
-    // Modifica tu función abrirModal para resetear el mensaje de error
     function abrirModal(id = '', nombre = '') {
+        // Resetear mensaje de error
         document.getElementById('errorNombre').style.display = 'none';
-    }
-    function abrirModal(id = '', nombre = '') {
+        
         document.getElementById('Id_carrera').value = id;
         document.getElementById('nombreCarrera').value = nombre;
         

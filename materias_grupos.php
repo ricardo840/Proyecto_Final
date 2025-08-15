@@ -1,4 +1,5 @@
 <?php
+require_once "init.php"; 
 require_once "modelos/mdl_materias_grupos.php";
 require_once "modelos/mdl_materias.php";
 require_once "modelos/mdl_grupos.php";
@@ -69,9 +70,9 @@ require_once "vistas/parte_superior.php";
                     <button class="btn btn-warning btn-sm" 
                         onclick="abrirModal(
                             '<?= $asignacion['id'] ?>', 
-                            '<?= $asignacion['materia_id'] ?? '' ?>',
-                            '<?= $asignacion['grupo_id'] ?? '' ?>',
-                            '<?= $asignacion['maestro_id'] ?? '' ?>'
+                            '<?= $asignacion['materia'] ?>',
+                            '<?= $asignacion['grupo'] ?>',
+                            '<?= $asignacion['maestro'] ?>'
                         )">
                         Editar
                     </button>
@@ -131,7 +132,6 @@ require_once "vistas/parte_superior.php";
             </div>
         </div>
     </div>
-</div>
 
 <nav aria-label="Paginación de materias_grupos">
     <ul class="pagination justify-content-center">
@@ -157,11 +157,39 @@ require_once "vistas/parte_superior.php";
 
 
 <script>
-    function abrirModal(id = '', idMateria = '', idGrupo = '', idMaestro = '') {
+    function abrirModal(id = '', materia = '', grupo = '', maestro = '') {
         document.getElementById('Id_asignacion').value = id;
-        document.getElementById('selectMateria').value = idMateria;
-        document.getElementById('selectGrupo').value = idGrupo;
-        document.getElementById('selectMaestro').value = idMaestro;
+        
+        // Seleccionar la opción correcta en los dropdowns
+        if (materia) {
+            const selectMateria = document.getElementById('selectMateria');
+            for (let i = 0; i < selectMateria.options.length; i++) {
+                if (selectMateria.options[i].text === materia) {
+                    selectMateria.selectedIndex = i;
+                    break;
+                }
+            }
+        }
+        
+        if (grupo) {
+            const selectGrupo = document.getElementById('selectGrupo');
+            for (let i = 0; i < selectGrupo.options.length; i++) {
+                if (selectGrupo.options[i].text === grupo) {
+                    selectGrupo.selectedIndex = i;
+                    break;
+                }
+            }
+        }
+        
+        if (maestro) {
+            const selectMaestro = document.getElementById('selectMaestro');
+            for (let i = 0; i < selectMaestro.options.length; i++) {
+                if (selectMaestro.options[i].text === maestro) {
+                    selectMaestro.selectedIndex = i;
+                    break;
+                }
+            }
+        }
         
         if (id) {
             document.getElementById('modalTitle').textContent = 'Editar Asignación';

@@ -1,4 +1,5 @@
 <?php
+require_once "init.php"; 
 require_once "modelos/mdl_materias_carrera.php";
 require_once "modelos/mdl_materias.php";
 require_once "modelos/mdl_carreras.php";
@@ -55,28 +56,28 @@ require_once "vistas/parte_superior.php";
                 <th>Acciones</th>
             </tr>
         </thead>
-        <tbody>
-            <?php foreach($relaciones as $relacion): ?>
-            <tr>
-                <td><?= htmlspecialchars($relacion['materia']) ?></td>
-                <td><?= htmlspecialchars($relacion['carrera']) ?></td>
-                <td>
-                    <button class="btn btn-warning btn-sm" 
-                        onclick="abrirModal(
-                            '<?= $relacion['id'] ?>', 
-                            '<?= $relacion['materia_id'] ?? '' ?>',
-                            '<?= $relacion['carrera_id'] ?? '' ?>'
-                        )">
-                        Editar
-                    </button>
-                    <button class="btn btn-danger btn-sm" 
-                        onclick="confirmarEliminacion(<?= $relacion['id'] ?>)">
-                        Eliminar
-                    </button>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </tbody>
+            <tbody>
+                <?php foreach($relaciones as $relacion): ?>
+                <tr>
+                    <td><?= htmlspecialchars($relacion['materia']) ?></td>
+                    <td><?= htmlspecialchars($relacion['carrera']) ?></td>
+                    <td>
+                        <button class="btn btn-warning btn-sm" 
+                            onclick="abrirModal(
+                                '<?= $relacion['id'] ?>', 
+                                '<?= $relacion['materia_id'] ?>',
+                                '<?= $relacion['carrera_id'] ?>'
+                            )">
+                            Editar
+                        </button>
+                        <button class="btn btn-danger btn-sm" 
+                            onclick="confirmarEliminacion(<?= $relacion['id'] ?>)">
+                            Eliminar
+                        </button>
+                    </td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
     </table>
 
     <div class="modal fade" id="myModal">

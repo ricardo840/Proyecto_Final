@@ -1,4 +1,5 @@
 <?php
+require_once "init.php"; 
 require_once "modelos/mdl_grupos.php";
 require_once "modelos/mdl_carreras.php";
 
@@ -60,7 +61,7 @@ require_once "vistas/parte_superior.php";
                         onclick="abrirModal(
                             '<?= $grupo['id'] ?>', 
                             '<?= htmlspecialchars($grupo['grupo'], ENT_QUOTES) ?>',
-                            '<?= $grupo['carrera_id'] ?? '' ?>'
+                            '<?= $grupo['carrera_id'] ?? '' ?>'  // Asegúrate que este campo existe
                         )">
                         Editar
                     </button>
@@ -133,9 +134,20 @@ require_once "vistas/parte_superior.php";
 
 <script>
     function abrirModal(id = '', grupo = '', carreraId = '') {
+        // Resetear mensajes de error si los hubiera
+        // document.getElementById('errorGrupo').style.display = 'none';
+        
+        // Llenar campos del formulario
         document.getElementById('Id_grupo').value = id;
         document.getElementById('nombreGrupo').value = grupo;
-        document.getElementById('selectCarrera').value = carreraId;
+        
+        // Seleccionar la carrera correcta en el dropdown
+        const selectCarrera = document.getElementById('selectCarrera');
+        if (carreraId) {
+            selectCarrera.value = carreraId;
+        } else {
+            selectCarrera.value = ''; // Resetear si no hay carreraId
+        }
         
         if (id) {
             document.getElementById('modalTitle').textContent = 'Editar Grupo';

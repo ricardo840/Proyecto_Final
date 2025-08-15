@@ -12,13 +12,14 @@ class MdlMateriasGrupos {
     public function obtenerTodos() {
         try {
             $query = "SELECT mg.id_materia_grupo as id, 
-                             m.nombre as materia, 
-                             g.grupo as grupo,
-                             ma.nombre as maestro
-                      FROM $this->tabla mg
-                      JOIN materias m ON mg.id_materia = m.id_materia
-                      JOIN grupos g ON mg.id_grupo = g.id_grupo
-                      JOIN maestros ma ON mg.id_maestro = ma.id_maestros";
+                            m.nombre as materia, 
+                            g.grupo as grupo,
+                            ma.nombre as maestro
+                    FROM $this->tabla mg
+                    JOIN materias m ON mg.id_materia = m.id_materia AND m.activo = 0
+                    JOIN grupos g ON mg.id_grupo = g.id_grupo AND g.activo = 0
+                    JOIN maestros ma ON mg.id_maestro = ma.id_maestros AND ma.activo = 0
+                    WHERE mg.activo = 0";
             return $this->conn->query($query)->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             error_log("Error en obtenerTodos: " . $e->getMessage());
@@ -49,28 +50,32 @@ class MdlMateriasGrupos {
         return $stmt->execute();
     }
 
-     public function obtenerPaginado($inicio, $limite) {
+    public function obtenerPaginado($inicio, $limite) {
         $sql = "SELECT mg.id_materia_grupo as id, 
-                             m.nombre as materia, 
-                             g.grupo as grupo,
-                             ma.nombre as maestro
-                      FROM $this->tabla mg
-                      JOIN materias m ON mg.id_materia = m.id_materia
-                      JOIN grupos g ON mg.id_grupo = g.id_grupo
-                      JOIN maestros ma ON mg.id_maestro = ma.id_maestros
-                      WHERE mg.activo = 0
-                      LIMIT :inicio, :limite";
+                    m.nombre as materia, 
+                    g.grupo as grupo,
+                    ma.nombre as maestro,
+                    mg.id_materia as materia_id,
+                    mg.id_grupo as grupo_id,
+                    mg.id_maestro as maestro_id
+                FROM $this->tabla mg
+                JOIN materias m ON mg.id_materia = m.id_materia
+                JOIN grupos g ON mg.id_grupo = g.id_grupo
+                JOIN maestros ma ON mg.id_maestro = ma.id_maestros
+                WHERE mg.activo = 0
+                LIMIT :inicio, :limite";
 
-            $stmt = $this->conn->prepare($sql);
-            $stmt->bindParam(':inicio', $inicio, PDO::PARAM_INT);
-            $stmt->bindParam(':limite', $limite, PDO::PARAM_INT);
-            $stmt->execute();
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
-        }
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':inicio', $inicio, PDO::PARAM_INT);
+        $stmt->bindParam(':limite', $limite, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 
     public function contarMaterias_grupos() {
         $sql = "SELECT COUNT(*) AS total FROM $this->tabla WHERE activo = 0";
         return $this->conn->query($sql)->fetch(PDO::FETCH_ASSOC)['total'];
     }
+
 }
 ?>

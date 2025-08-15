@@ -11,7 +11,7 @@ class MdlCarrera {
 
     public function obtenerTodos() {
         try {
-            return $this->conn->query("SELECT id_carrera as id, nombre FROM $this->tabla")->fetchAll(PDO::FETCH_ASSOC);
+            return $this->conn->query("SELECT id_carrera as id, nombre FROM $this->tabla where activo=0" )->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             error_log("Error en obtenerTodos: " . $e->getMessage());
             return [];

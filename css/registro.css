@@ -1,0 +1,117 @@
+:root {
+    --bg-color: #e0e5ec;
+    --text-color: #2a2a2a;
+    --primary-color: #4e73df;
+
+    --shadow-light: rgba(255, 255, 255, 0.7);
+    --shadow-dark: rgba(163, 177, 198, 0.7);
+}
+
+body {
+    background-color: var(--bg-color);
+    font-family: 'Nunito', sans-serif;
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    transition: background-color 0.3s ease;
+}
+
+.form {
+    background-color: var(--bg-color);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 
+        10px 10px 20px var(--shadow-dark),
+        -10px -10px 20px var(--shadow-light);
+    width: 100%;
+    max-width: 400px;
+}
+
+.form h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: var(--primary-color);
+    text-shadow: 1px 1px 2px var(--shadow-light);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 12px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    box-shadow: 
+        inset 3px 3px 6px var(--shadow-dark),
+        inset -3px -3px 6px var(--shadow-light);
+    transition: box-shadow 0.3s ease;
+}
+
+.form-control:focus {
+    outline: none;
+    box-shadow: 
+        inset 1px 1px 3px var(--shadow-dark),
+        inset -1px -1px 3px var(--shadow-light);
+}
+
+.btn {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 
+        5px 5px 10px var(--shadow-dark),
+        -5px -5px 10px var(--shadow-light);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(2px);
+    box-shadow: 
+        3px 3px 6px var(--shadow-dark),
+        -3px -3px 6px var(--shadow-light);
+}
+
+.btn:active {
+    box-shadow: 
+        inset 2px 2px 5px var(--shadow-dark),
+        inset -2px -2px 5px var(--shadow-light);
+}
+
+.alert {
+    padding: 10px 15px;
+    border-radius: 12px;
+    background-color: #f8d7da;
+    color: #721c24;
+    box-shadow: 
+        5px 5px 10px var(--shadow-dark),
+        -5px -5px 10px var(--shadow-light);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+p {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9rem;
+}
+
+p a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+p a:hover {
+    text-decoration: underline;
+}

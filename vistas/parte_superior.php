@@ -1,3 +1,12 @@
+<?php
+    // Obtener el nombre del archivo actual
+    $current_page = basename($_SERVER['PHP_SELF']);
+    
+    // Función para verificar si la página está activa
+    function isActive($page, $current_page) {
+        return ($page == $current_page) ? 'active' : '';
+    }
+?>
 <!DOCTYPE html>
 <html lang="es"> 
 
@@ -36,67 +45,67 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
                 <img src="img/logo_up.png" alt="Logo Universidad" style="max-width: 50px; height: auto;">
-                <div class="sidebar-brand-text mx-3">Tutorías <sup></sup></div>
+                <div class="sidebar-brand-text mx-3"><strong>Tutorías</strong> <sup></sup></div>
             </a>
             
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
             
             <!-- Inicio -->
-            <li class="nav-item active">
+           <li class="nav-item active">
                 <a class="nav-link" href="index.php">
                     <i class="fas fa-home"></i>
-                    <span>Inicio</span>
+                    <span><strong>Inicio</strong></span>
                 </a>
             </li>
             
             <!-- Navigation Items -->
             <li class="nav-item">
-                <a class="nav-link" href="alumnos.php">
+                <a class="nav-link <?php echo isActive('alumnos.php', $current_page); ?>" href="alumnos.php">
                     <i class="fas fa-user-graduate"></i>
-                    <span>Alumnos</span>
+                    <span><strong>Alumnos</strong></span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="carreras.php">
+                <a class="nav-link <?php echo isActive('carreras.php', $current_page); ?>" href="carreras.php">
                     <i class="fas fa-book"></i>
-                    <span>Carreras</span>
+                    <span><strong>Carreras</strong></span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="grupos.php">
+                <a class="nav-link <?php echo isActive('grupos.php', $current_page); ?>" href="grupos.php">
                     <i class="fas fa-users"></i>
-                    <span>Grupos</span>
+                    <span><strong>Grupos</strong></span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="maestros.php">
+                <a class="nav-link <?php echo isActive('maestros.php', $current_page); ?>" href="maestros.php">
                     <i class="fas fa-chalkboard-teacher"></i>
-                    <span>Maestros</span>
+                    <span><strong>Maestros</strong></span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="materias.php">
+                <a class="nav-link <?php echo isActive('materias.php', $current_page); ?>" href="materias.php">
                     <i class="fas fa-book-open"></i>
-                    <span>Materias</span>
+                    <span><strong>Materias</strong></span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="asignacion.php">
+                <a class="nav-link <?php echo isActive('asignacion.php', $current_page); ?>" href="asignacion.php">
                     <i class="fas fa-hands-helping"></i>
-                    <span>Tutorias</span>
+                    <span><strong>Tutorias</strong></span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="materias_grupos.php">
+                <a class="nav-link <?php echo isActive('materias_grupos.php', $current_page); ?>" href="materias_grupos.php">
                     <i class="fas fa-layer-group"></i>
-                    <span>Materias por Grupo</span>
+                    <span><strong>Materias por Grupo</strong></span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="materias_carrera.php">
+                <a class="nav-link <?php echo isActive('materias_carrera.php', $current_page); ?>" href="materias_carrera.php">
                     <i class="fas fa-project-diagram"></i>
-                    <span>Materias por Carrera</span>
+                    <span><strong>Materias por Carrera</strong></span>
                 </a>
             </li>
            
@@ -111,6 +120,10 @@
 
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand topbar">
+                    <span class="usuario-activo">
+                        <string>Usuario activo:</string> <strong><?php echo isset($_SESSION['nombre']) ? htmlspecialchars($_SESSION['nombre']) : 'usuario'; ?></strong>
+                    </span>
+
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
@@ -138,16 +151,8 @@
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Perfil
                                 </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Configuración
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Registro de actividad
-                                </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="logout.php">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Cerrar sesión
                                 </a>

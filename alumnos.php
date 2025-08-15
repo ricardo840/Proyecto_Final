@@ -1,4 +1,5 @@
 <?php
+require_once "init.php"; 
 require_once "Modelos/mdl_alumnos.php";
 
 $modelo = new MdlAlumnos();
@@ -123,17 +124,17 @@ require_once "vistas/parte_superior.php";
                         <div class="form-group">
                             <label>Nombre</label>
                             <input type="text" class="form-control" name="nombre" id="nombreAlumno" required>
-                            <small id="errorNombre" class="text-danger" style="display:none;">No se permiten números en el nombre</small>
+                            <small id="errorNombre" class="text-danger" style="display:none;">No se permiten números</small>
                         </div>
                         <div class="form-group">
                             <label>Apellido Paterno</label>
                             <input type="text" class="form-control" name="ape_pa" id="apePaAlumno" required>
-                            <small id="errorApePa" class="text-danger" style="display:none;">No se permiten números en el apellido paterno</small>
+                            <small id="errorApePa" class="text-danger" style="display:none;">No se permiten números</small>
                         </div>
                         <div class="form-group">
                             <label>Apellido Materno</label>
                             <input type="text" class="form-control" name="ape_ma" id="apeMaAlumno" required>
-                            <small id="errorApeMa" class="text-danger" style="display:none;">No se permiten números en el apellido materno</small>
+                            <small id="errorApeMa" class="text-danger" style="display:none;">No se permiten números</small>
                         </div>
                         <div class="form-group">
                             <label>Género</label>
@@ -170,28 +171,27 @@ require_once "vistas/parte_superior.php";
         const apeMa = document.getElementById('apeMaAlumno').value;
         let valido = true;
         
+        // Resetear todos los mensajes de error primero
+        document.getElementById('errorNombre').style.display = 'none';
+        document.getElementById('errorApePa').style.display = 'none';
+        document.getElementById('errorApeMa').style.display = 'none';
+        
         // Validar nombre
         if (/\d/.test(nombre)) {
             document.getElementById('errorNombre').style.display = 'block';
             valido = false;
-        } else {
-            document.getElementById('errorNombre').style.display = 'none';
         }
         
         // Validar apellido paterno
         if (/\d/.test(apePa)) {
             document.getElementById('errorApePa').style.display = 'block';
             valido = false;
-        } else {
-            document.getElementById('errorApePa').style.display = 'none';
         }
         
         // Validar apellido materno
         if (/\d/.test(apeMa)) {
             document.getElementById('errorApeMa').style.display = 'block';
             valido = false;
-        } else {
-            document.getElementById('errorApeMa').style.display = 'none';
         }
         
         return valido;
@@ -203,12 +203,24 @@ require_once "vistas/parte_superior.php";
         document.getElementById('errorApePa').style.display = 'none';
         document.getElementById('errorApeMa').style.display = 'none';
         
+        // Mapear el género abreviado al valor completo esperado por el select
+        let generoCompleto = '';
+        if (genero === 'M') {
+            generoCompleto = 'Masculino';
+        } else if (genero === 'F') {
+            generoCompleto = 'Femenino';
+        } else if (genero === 'O') {
+            generoCompleto = 'Otro';
+        } else {
+            generoCompleto = genero; // Por si acaso ya viene completo
+        }
+        
         // Llenar campos del formulario
         document.getElementById('Id_alumno').value = id;
         document.getElementById('nombreAlumno').value = nombre;
         document.getElementById('apePaAlumno').value = ape_pa;
         document.getElementById('apeMaAlumno').value = ape_ma;
-        document.getElementById('generoAlumno').value = genero;
+        document.getElementById('generoAlumno').value = generoCompleto;
         document.getElementById('activoAlumno').value = activo;
         
         if (id) {

@@ -13,9 +13,9 @@
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
                         <span>
-                            <a>Sistema Integral: </a>
+                            <a><strong>Sistema Integral:</strong> </a>
                             <a href="http://sisintegral.uprr.edu.mx/docentes.php/signin" target="_blank">Docentes</a><br><br>
-                            <a>Universidad Politécnica de la Región Ribereña. Todos los derechos reservados Los 5 Furiosos 2025.</a>
+                            <a><strong>Universidad Politécnica de la Región Ribereña. Todos los derechos reservados Los 5 Furiosos 2025.</strong></a>
                         </span>
                     </div>
                 </div>

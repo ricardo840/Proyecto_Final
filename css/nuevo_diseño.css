@@ -1,6 +1,6 @@
 /* --- Variables Neumorphism --- */
 :root {
-    --bg-color: #e0e5ec;
+    --bg-color: #ffffff;
     --primary-color: #4e73df;
     --shadow-light: rgba(255, 255, 255, 0.7);
     --shadow-dark: rgba(163, 177, 198, 0.7);
@@ -132,9 +132,6 @@ body {
     background-color: var(--bg-color) !important;
     border: none !important;
     border-radius: 20px !important;
-    box-shadow: 
-        15px 15px 30px var(--shadow-dark),
-        -15px -15px 30px var(--shadow-light);
 }
 
 .modal-header, .modal-footer {
@@ -335,7 +332,7 @@ body {
 
 /* COLORES PARA ICONOS DEL SIDEBAR */
 #accordionSidebar .nav-link i.fa-home { /* Inicio */
-    color: #4e73df; /* Azul principal */
+    color: #ffffff; /* Azul principal */
 }
 
 #accordionSidebar .nav-link i.fa-user-graduate { /* Alumnos */
@@ -377,6 +374,19 @@ body {
     transition: all 0.3s ease;
 }
 
+.sidebar .nav-item .nav-link.active {
+    background: #ffffff;/*fondo*/
+    border-left: 10px solid #4e73df; /*izquierda*/
+    color: #000000 !important; /*texto*/
+    transform: translateX(12px);
+    transition: all 0.3s ease;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
 /* ===== Modo Oscuro ===== */
 .dark-mode {
     --bg-color: #2a3042;
@@ -400,7 +410,7 @@ body {
     --topbar-highlight: #6c63ff;
 }
 
-/* Añadir estas reglas para las tablas en modo oscuro */
+/* Reglas para las tablas en modo oscuro */
 .dark-mode .table td, 
 .dark-mode .table th {
     border-top: 1px solid #3a3f51 !important;
@@ -468,8 +478,8 @@ body {
 .sticky-footer {
     background-color: var(--bg-color) !important;
     box-shadow: 
-        0 -5px 10px var(--shadow-dark),
-        0 5px 10px var(--shadow-light);
+        0 -0px 0px var(--shadow-dark),
+        0 0px 0px var(--shadow-light);
 }
 
 /* Ajustes para el contenido principal */
@@ -537,7 +547,7 @@ body.loaded {
 
 /* Ajustar el avatar del usuario para que coincida */
 .topbar .nav-item.dropdown .nav-link {
-    padding: 0;
+    padding: auto;
     display: flex;
     align-items: center;
     height: 100%;
@@ -577,3 +587,21 @@ body.loaded {
     justify-content: center;
     margin-right: 15px;
 }
+
+ .usuario-activo {
+    background: linear-gradient(90deg, #4e73df);
+    padding: 8px 20px;
+    border-radius: 10px; /* Más redondeado */
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 19px;
+    font-weight: 600;
+    color: #ffffff;
+    display: inline-block;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.usuario-activo strong {
+    color: #ffffff; /* Amarillo contraste */
+    font-weight: 700;
+}
+
