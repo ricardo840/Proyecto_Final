@@ -1,0 +1,26 @@
+# Protección del directorio de modelos
+# Denegar acceso directo a archivos PHP
+<Files "*.php">
+    Order Deny,Allow
+    Deny from all
+</Files>
+
+# Permitir acceso solo desde el servidor local
+<Files "*.php">
+    Order Deny,Allow
+    Deny from all
+    Allow from 127.0.0.1
+    Allow from ::1
+</Files>
+
+# Proteger archivos de configuración
+<Files "*.ini">
+    Order Deny,Allow
+    Deny from all
+</Files>
+
+# Proteger archivos de configuración
+<Files "*.conf">
+    Order Deny,Allow
+    Deny from all
+</Files>

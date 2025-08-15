@@ -1,8 +1,8 @@
 <?php
-require_once "modelos/conexion.php";
+require_once "modelos/conexion_public.php";
 
 $msg = '';
-$conn = (new Conexion())->conectar();
+$conn = (new ConexionPublic())->conectar();
 
 if(isset($_POST['submit'])){
     // Validar que todos los campos existan

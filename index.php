@@ -1,4 +1,5 @@
 <?php
+define('SECURE_ACCESS', true);
 require_once "init.php"; 
 
 require_once "vistas/parte_superior.php";

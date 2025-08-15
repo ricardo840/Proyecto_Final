@@ -1,4 +1,5 @@
 <?php
+define('SECURE_ACCESS', true);
 require_once "init.php"; 
 require_once "modelos/mdl_materias_grupos.php";
 require_once "modelos/mdl_materias.php";

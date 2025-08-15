@@ -1,11 +1,5 @@
 <?php
-// Protección contra acceso directo
-if (!defined('SECURE_ACCESS')) {
-    http_response_code(403);
-    die('Acceso denegado');
-}
-
-class Conexion {
+class ConexionPublic {
     private $usuario = "root";
     private $contraseña = "";
     private $db = "proyecto3";
@@ -29,9 +23,4 @@ class Conexion {
         return $this->conn;
     }
 }
-
-
-
-
-
-
+?>

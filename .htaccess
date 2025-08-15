@@ -1,0 +1,70 @@
+# Protección de archivos críticos del sistema
+
+# Permitir acceso a login.php y registro.php desde el navegador
+<Files "login.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+
+<Files "registro.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+
+# Proteger init.php - solo acceso interno
+<Files "init.php">
+    Order Deny,Allow
+    Deny from all
+    Allow from 127.0.0.1
+    Allow from ::1
+</Files>
+
+# Proteger archivos de configuración
+<Files "*.config.php">
+    Order Deny,Allow
+    Deny from all
+</Files>
+
+# Proteger archivos de configuración
+<Files "*.ini">
+    Order Deny,Allow
+    Deny from all
+</Files>
+
+# Proteger archivos de configuración
+<Files "*.conf">
+    Order Deny,Allow
+    Deny from all
+</Files>
+
+# Proteger archivos de base de datos
+<Files "*.sql">
+    Order Deny,Allow
+    Deny from all
+</Files>
+
+# Proteger archivos de log
+<Files "*.log">
+    Order Deny,Allow
+    Deny from all
+</Files>
+
+# Proteger archivos de backup
+<Files "*.bak">
+    Order Deny,Allow
+    Deny from all
+</Files>
+
+# Proteger archivos de backup
+<Files "*.backup">
+    Order Deny,Allow
+    Deny from all
+</Files>
+
+# Headers de seguridad adicionales
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options nosniff
+    Header always set X-Frame-Options DENY
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>

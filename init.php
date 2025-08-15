@@ -1,4 +1,10 @@
 <?php
+// Protección contra acceso directo
+if (!defined('SECURE_ACCESS')) {
+    http_response_code(403);
+    die('Acceso denegado');
+}
+
 // Iniciar sesión de manera segura
 if (session_status() === PHP_SESSION_NONE) {
     session_set_cookie_params([

@@ -1,9 +1,9 @@
 <?php
 session_start();
-require_once "modelos/conexion.php";
+require_once "modelos/conexion_public.php";
 
 $msg = '';
-$conn = (new Conexion())->conectar();
+$conn = (new ConexionPublic())->conectar();
 
 if(isset($_POST['submit'])){
     $email = trim($_POST['email']);
