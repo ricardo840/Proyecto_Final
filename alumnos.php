@@ -1,6 +1,4 @@
-<?php
-define('SECURE_ACCESS', true);
-require_once "init.php"; 
+<?php 
 require_once "Modelos/mdl_alumnos.php";
 
 $modelo = new MdlAlumnos();

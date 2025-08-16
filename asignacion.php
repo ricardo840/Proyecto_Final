@@ -1,6 +1,4 @@
 <?php
-define('SECURE_ACCESS', true);
-require_once "init.php"; 
 require_once "modelos/mdl_asignacion.php";
 
 $modelo = new MdlAsignacion();
@@ -288,8 +286,6 @@ require_once "vistas/parte_superior.php";
         $('#inputHombres').val(hombres);
         $('#inputMujeres').val(mujeres);
     }
-
-    document.getElementById('selectAlumnos').addEventListener('change', actualizarContadores);
 
     function abrirModalEditar(id) {
         fetch(`Controladores/ctrl_asignacion.php?action=obtener&id=${id}`)

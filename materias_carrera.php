@@ -1,6 +1,4 @@
-<?php
-define('SECURE_ACCESS', true);
-require_once "init.php"; 
+<?php 
 require_once "modelos/mdl_materias_carrera.php";
 require_once "modelos/mdl_materias.php";
 require_once "modelos/mdl_carreras.php";

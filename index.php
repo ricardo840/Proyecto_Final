@@ -1,6 +1,4 @@
-<?php
-define('SECURE_ACCESS', true);
-require_once "init.php"; 
+<?php 
 
 require_once "vistas/parte_superior.php";
 require_once "modelos/conexion.php";

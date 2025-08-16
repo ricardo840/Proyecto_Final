@@ -1,10 +1,4 @@
 <?php
-// Protección contra acceso directo
-if (!defined('SECURE_ACCESS')) {
-    http_response_code(403);
-    die('Acceso denegado');
-}
-
 // Configuración de base de datos
 return [
     'host' => 'localhost',

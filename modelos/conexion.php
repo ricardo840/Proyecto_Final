@@ -1,10 +1,4 @@
 <?php
-// Protección contra acceso directo
-if (!defined('SECURE_ACCESS')) {
-    http_response_code(403);
-    die('Acceso denegado');
-}
-
 class Conexion {
     private $usuario = "root";
     private $contraseña = "";
